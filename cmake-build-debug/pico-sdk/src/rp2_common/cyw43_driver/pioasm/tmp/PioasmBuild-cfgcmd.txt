@@ -1,1 +1,0 @@
-cmd='D:/JetBrains/CLion 2022.3.2/bin/cmake/win/x64/bin/cmake.exe;-GNinja;-C<TMP_DIR>/PioasmBuild-cache-$<CONFIG>.cmake;<SOURCE_DIR><SOURCE_SUBDIR>'
