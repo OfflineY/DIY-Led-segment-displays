@@ -18,34 +18,35 @@ if (PICO_SDK_VERSION_STRING VERSION_LESS "1.4.0")
   message(FATAL_ERROR "Raspberry Pi Pico SDK version 1.4.0 (or later) required. Your version is ${PICO_SDK_VERSION_STRING}")
 endif()
 
-project(Test C CXX ASM)
+# DIY-Led-segment-displays
+project(DIY-Led-segment-displays C CXX ASM)
 
 # Initialise the Raspberry Pi Pico SDK
 pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(Test led_segment_displays.c)
+add_executable(DIY-Led-segment-displays led_segment_displays.cpp)
 
-pico_set_program_name(Test "Test")
-pico_set_program_version(Test "0.1")
+pico_set_program_name(DIY-Led-segment-displays "DIY-Led-segment-displays")
+pico_set_program_version(DIY-Led-segment-displays "0.1")
 
-pico_enable_stdio_uart(Test 1)
-pico_enable_stdio_usb(Test 0)
+pico_enable_stdio_uart(DIY-Led-segment-displays 1)
+pico_enable_stdio_usb(DIY-Led-segment-displays 0)
 
 # Add the standard library to the build
-target_link_libraries(Test
+target_link_libraries(DIY-Led-segment-displays
         pico_stdlib)
 
 # Add the standard include files to the build
-target_include_directories(Test PRIVATE
+target_include_directories(DIY-Led-segment-displays PRIVATE
   ${CMAKE_CURRENT_LIST_DIR}
   ${CMAKE_CURRENT_LIST_DIR}/.. # for our common lwipopts or any other standard includes, if required
 )
 
 # Add any user requested libraries
-target_link_libraries(Test
+target_link_libraries(DIY-Led-segment-displays
         )
 
-pico_add_extra_outputs(Test)
+pico_add_extra_outputs(DIY-Led-segment-displays)
 
