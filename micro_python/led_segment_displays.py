@@ -2,14 +2,17 @@ import machine
 from time import sleep
 
 '''
-Plate design:
-Each serial number corresponds to a pin port and LED
-
-            A(pin0)
-    B(pin1)       C(pin2)
-            D(pin3)
-    E(pin4)       F(pin5)
-            G(pin6)
+ * Plate design: 
+ * Each serial number corresponds to a pin port and LED
+ * 
+ *      |---A---|
+ *      B       C
+ *      |---D---|   
+ *      E       F
+ *      |---G---|
+ * 
+ * Pin: 
+ * Test Pin and Main Pin
 '''
 
 # LED PING
@@ -38,7 +41,7 @@ def main():
     LED.Animation.bagua(5)
     LED.Animation.flashing(8, 0.1)
     LED.Animation.rotating(5)
-    sleep_time = 0.2
+    sleep_time = 0.3
     num = 0
     while num <= 9:
         sleep(sleep_time)

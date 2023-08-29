@@ -26,7 +26,7 @@ pico_sdk_init()
 
 # Add executable. Default name is the project name, version 0.1
 
-add_executable(DIY-Led-segment-displays led_segment_displays.cpp)
+add_executable(DIY-Led-segment-displays main.cpp)
 
 pico_set_program_name(DIY-Led-segment-displays "DIY-Led-segment-displays")
 pico_set_program_version(DIY-Led-segment-displays "0.1")
