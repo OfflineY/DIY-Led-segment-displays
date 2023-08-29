@@ -8,12 +8,20 @@ Make a paper Led-segment-displays model, this step is skipped.
 
 ## 2. Prepare the Raspberry Pi Pico
 
-### Getting started
+### 2.1 C++ and CMake
+
 ```
 git clone https://github.com/OfflineY/DIY-Led-segment-displays.git
 ```
+Use CMake to build the UF2 binary file for this project, or directly drag and drop the **[pre-prepared UF2](https://github.com/OfflineY/DIY-Led-segment-displays/releases)** file into your Raspberry Pi Pico. Please pay attention to the pin placement and make modifications as necessary.
 
-### Edit the code
+
+### 2.2 MicroPython
+
+```
+git clone https://github.com/OfflineY/DIY-Led-segment-displays.git
+cd micro_python
+```
 
 use vscode open this project and add an **RT-Thread MicroPython plugin** to vscode.
 

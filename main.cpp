@@ -29,13 +29,23 @@ const uint MAIN_LED_F_PIN = 5;
 const uint MAIN_LED_G_PIN = 6;
 
 
+
 /*
     LED object group
+
+    = uint LED_PIN
+
+    - LED(uint)
+    - ON
+    - OFF
+    - SET_STATUS(bool)
 */
 
 // create an led object
 class LED {
     public:
+
+        // initialize led pin
         uint LED_PIN;
 
         // initialize the output pin and led
@@ -78,6 +88,9 @@ LED MainLED_G(MAIN_LED_G_PIN);
 
 /*
     Utils
+
+    - init_all_led_off
+    - init_all_led_on
 */
 
 void init_all_led_off() {
@@ -104,20 +117,24 @@ void init_all_led_on() {
 
 /*
     Animation object group
+
+    - Flashing(int, int)
+    - Rotating(int, int)
+    - BaGua(int, int)
 */
 
 // LED animation presets
 class Animation {
     public:
 
-    // Flashing effect animation
-    void Flashing(int times, int sleep_time);
+        // Flashing effect animation
+        void Flashing(int times, int sleep_time);
 
-    // Rotation effect animation
-    void Rotating(int times, int sleep_time);
+        // Rotation effect animation
+        void Rotating(int times, int sleep_time);
 
-    // BaGua effect animation
-    void BaGua(int times, int sleep_time);
+        // BaGua effect animation
+        void BaGua(int times, int sleep_time);
 };
 
 void Animation::Flashing(int times, int sleep_time) {
@@ -237,12 +254,22 @@ void Animation::BaGua(int times, int sleep_time) {
 
 /*
     Display Numbers
+
+    - display_number(int)
 */
 
 // dispaly_number display numbers from 0 to 9
 void display_number(int number) {
     init_all_led_off();
     switch (number){
+    
+    /*
+        |---x---|
+        x       x
+        |---o---|
+        x       x
+        |---x---|
+    */
     case 0:
         MainLED_A.ON();
         MainLED_B.ON();
@@ -253,6 +280,13 @@ void display_number(int number) {
         MainLED_G.ON();
         break;
 
+    /*
+        |---o---|
+        o       x
+        |---o---|
+        o       x
+        |---o---|
+    */
     case 1:
         MainLED_A.OFF();
         MainLED_B.OFF();
@@ -263,6 +297,13 @@ void display_number(int number) {
         MainLED_G.OFF();
         break;
 
+    /*
+        |---x---|
+        o       x
+        |---x---|
+        x       o
+        |---x---|
+    */
     case 2:
         MainLED_A.ON();
         MainLED_B.OFF();
@@ -273,6 +314,13 @@ void display_number(int number) {
         MainLED_G.ON();
         break;
 
+    /*
+        |---x---|
+        o       x
+        |---x---|
+        o       x
+        |---x---|
+    */
     case 3:
         MainLED_A.ON();
         MainLED_B.OFF();
@@ -283,6 +331,13 @@ void display_number(int number) {
         MainLED_G.ON();
         break;
 
+    /*
+        |---o---|
+        x       x
+        |---x---|
+        o       x
+        |---o---|
+    */
     case 4:
         MainLED_A.OFF();
         MainLED_B.ON();
@@ -293,6 +348,13 @@ void display_number(int number) {
         MainLED_G.OFF();
         break;
 
+    /*
+        |---x---|
+        x       o
+        |---x---|
+        o       x
+        |---x---|
+    */
     case 5:
         MainLED_A.ON();
         MainLED_B.ON();
@@ -303,6 +365,13 @@ void display_number(int number) {
         MainLED_G.ON();
         break;
 
+    /*
+        |---x---|
+        x       o
+        |---x---|
+        x       x
+        |---x---|
+    */
     case 6:
         MainLED_A.ON();
         MainLED_B.ON();
@@ -313,6 +382,13 @@ void display_number(int number) {
         MainLED_G.ON();
         break;
 
+    /*
+        |---x---|
+        o       x
+        |---o---|
+        o       x
+        |---o---|
+    */
     case 7:
         MainLED_A.ON();
         MainLED_B.OFF();
@@ -323,6 +399,13 @@ void display_number(int number) {
         MainLED_G.OFF();
         break;
 
+    /*
+        |---x---|
+        x       x
+        |---x---|
+        x       x
+        |---x---|
+    */
     case 8:
         MainLED_A.ON();
         MainLED_B.ON();
@@ -333,6 +416,13 @@ void display_number(int number) {
         MainLED_G.ON();
         break;
 
+    /*
+        |---x---|
+        x       x
+        |---x---|
+        o       x
+        |---x---|
+    */
     case 9:
         MainLED_A.ON();
         MainLED_B.ON();
@@ -344,6 +434,7 @@ void display_number(int number) {
         break;
     
     default:
+        init_all_led_off();
         break;
     }
 }
@@ -360,7 +451,7 @@ int main() {
 
     for (int i = 0; i <= 9; i++) {
         display_number(i);
-        sleep_ms(1000);
+        sleep_ms(500);
     }
 
     init_all_led_off();
