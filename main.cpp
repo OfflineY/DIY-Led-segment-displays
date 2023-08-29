@@ -350,6 +350,8 @@ void display_number(int number) {
 
 
 int main() {
+    init_all_led_on();
+
     Animation LED_Animation;
 
     LED_Animation.Flashing(10, 100);
@@ -360,4 +362,6 @@ int main() {
         display_number(i);
         sleep_ms(1000);
     }
+
+    init_all_led_off();
 }
