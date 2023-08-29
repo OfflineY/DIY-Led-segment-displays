@@ -77,11 +77,171 @@ LED MainLED_G(MAIN_LED_G_PIN);
 
 
 /*
+    Utils
+*/
+
+void init_all_led_off() {
+    MainLED_A.OFF();
+    MainLED_B.OFF();
+    MainLED_C.OFF();
+    MainLED_D.OFF();
+    MainLED_E.OFF();
+    MainLED_F.OFF();
+    MainLED_G.OFF();
+}
+
+void init_all_led_on() {
+    MainLED_A.ON();
+    MainLED_B.ON();
+    MainLED_C.ON();
+    MainLED_D.ON();
+    MainLED_E.ON();
+    MainLED_F.ON();
+    MainLED_G.ON();
+}
+
+
+
+/*
+    Animation object group
+*/
+
+// LED animation presets
+class Animation {
+    public:
+
+    // Flashing effect animation
+    void Flashing(int times, int sleep_time);
+
+    // Rotation effect animation
+    void Rotating(int times, int sleep_time);
+
+    // BaGua effect animation
+    void BaGua(int times, int sleep_time);
+};
+
+void Animation::Flashing(int times, int sleep_time) {
+    for (int i = 0; i <= times; i++) {
+        // 1 frame
+        init_all_led_on();
+        MainLED_D.OFF();
+        sleep_ms(sleep_time);
+
+        // 2 frame
+        init_all_led_off();
+        sleep_ms(sleep_time);
+    }
+}
+
+void Animation::Rotating(int times, int sleep_time) {
+    for (int i = 0; i < times; i++) {
+        // 1 frame
+        init_all_led_on();
+        MainLED_D.OFF();
+        MainLED_A.OFF();
+        sleep_ms(sleep_time);
+
+        // 2 frame
+        init_all_led_on();
+        MainLED_D.OFF();
+        MainLED_C.OFF();
+        sleep_ms(sleep_time);
+
+        // 3 frame
+        init_all_led_on();
+        MainLED_D.OFF();
+        MainLED_F.OFF();
+        sleep_ms(sleep_time);
+
+        // 4 frame
+        init_all_led_on();
+        MainLED_D.OFF();
+        MainLED_G.OFF();
+        sleep_ms(sleep_time);
+
+        // 5 frame
+        init_all_led_on();
+        MainLED_D.OFF();
+        MainLED_E.OFF();
+        sleep_ms(sleep_time);
+
+        // 6 frame
+        init_all_led_on();
+        MainLED_D.OFF();
+        MainLED_B.OFF();
+        sleep_ms(sleep_time);
+    }
+}
+
+void Animation::BaGua(int times, int sleep_time) {
+    for (int i = 0; i <= times; i++) {
+        // 1 frame
+        init_all_led_off();
+        MainLED_A.ON();
+        MainLED_C.ON();
+        MainLED_D.ON();
+        sleep_ms(sleep_time);
+
+        // 2 frame
+        init_all_led_off();
+        MainLED_C.ON();
+        MainLED_D.ON();
+        MainLED_E.ON();
+        sleep_ms(sleep_time);
+
+        // 3 frame
+        init_all_led_off();
+        MainLED_E.ON();
+        MainLED_G.ON();
+        MainLED_D.ON();
+        sleep_ms(sleep_time);
+
+        // 4 frame
+        init_all_led_off();
+        MainLED_E.ON();
+        MainLED_G.ON();
+        MainLED_F.ON();
+        sleep_ms(sleep_time);
+
+        // 5 frame
+        init_all_led_off();
+        MainLED_D.ON();
+        MainLED_G.ON();
+        MainLED_F.ON();
+        sleep_ms(sleep_time);
+
+        // 6 frame
+        init_all_led_off();
+        MainLED_D.ON();
+        MainLED_B.ON();
+        MainLED_F.ON();
+        sleep_ms(sleep_time);
+
+        // 7 frame
+        init_all_led_off();
+        MainLED_D.ON();
+        MainLED_B.ON();
+        MainLED_A.ON();
+        sleep_ms(sleep_time);
+
+        // 8 frame
+        init_all_led_off();
+        MainLED_C.ON();
+        MainLED_B.ON();
+        MainLED_A.ON();
+        sleep_ms(sleep_time);
+    }
+}
+
+
+
+/*
     Display Numbers
 */
 
 // dispaly_number display numbers from 0 to 9
 void display_number(int number) {
+    init_all_led_off();
     switch (number){
     case 0:
         MainLED_A.ON();
@@ -91,6 +251,7 @@ void display_number(int number) {
         MainLED_E.ON();
         MainLED_F.ON();
         MainLED_G.ON();
+        break;
 
     case 1:
         MainLED_A.OFF();
@@ -100,6 +261,7 @@ void display_number(int number) {
         MainLED_E.OFF();
         MainLED_F.ON();
         MainLED_G.OFF();
+        break;
 
     case 2:
         MainLED_A.ON();
@@ -109,6 +271,7 @@ void display_number(int number) {
         MainLED_E.ON();
         MainLED_F.OFF();
         MainLED_G.ON();
+        break;
 
     case 3:
         MainLED_A.ON();
@@ -118,6 +281,7 @@ void display_number(int number) {
         MainLED_E.OFF();
         MainLED_F.ON();
         MainLED_G.ON();
+        break;
 
     case 4:
         MainLED_A.OFF();
@@ -127,6 +291,7 @@ void display_number(int number) {
         MainLED_E.OFF();
         MainLED_F.ON();
         MainLED_G.OFF();
+        break;
 
     case 5:
         MainLED_A.ON();
@@ -136,6 +301,7 @@ void display_number(int number) {
         MainLED_E.OFF();
         MainLED_F.ON();
         MainLED_G.ON();
+        break;
 
     case 6:
         MainLED_A.ON();
@@ -145,6 +311,7 @@ void display_number(int number) {
         MainLED_E.ON();
         MainLED_F.ON();
         MainLED_G.ON();
+        break;
 
     case 7:
         MainLED_A.ON();
@@ -154,6 +321,7 @@ void display_number(int number) {
         MainLED_E.OFF();
         MainLED_F.ON();
         MainLED_G.OFF();
+        break;
 
     case 8:
         MainLED_A.ON();
@@ -163,6 +331,7 @@ void display_number(int number) {
         MainLED_E.ON();
         MainLED_F.ON();
         MainLED_G.ON();
+        break;
 
     case 9:
         MainLED_A.ON();
@@ -172,6 +341,7 @@ void display_number(int number) {
         MainLED_E.OFF();
         MainLED_F.ON();
         MainLED_G.ON();
+        break;
     
     default:
         break;
@@ -180,5 +350,14 @@ void display_number(int number) {
 
 
 int main() {
-    display_number(1);
+    Animation LED_Animation;
+
+    LED_Animation.Flashing(10, 100);
+    LED_Animation.Rotating(5, 100);
+    LED_Animation.BaGua(8, 100);
+
+    for (int i = 0; i <= 9; i++) {
+        display_number(i);
+        sleep_ms(1000);
+    }
 }
