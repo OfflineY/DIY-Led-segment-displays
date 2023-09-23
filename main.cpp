@@ -1,8 +1,10 @@
 #include "iostream"
 #include "pico/stdlib.h"
 
-// building...
+
 /*
+ * 2023/09/01
+ *
  * each serial number corresponds to a pin port and led
  * 
  *    |---A---|
@@ -12,8 +14,8 @@
  *    |---G---|
  * 
  * 
- * gpio: GPIO_OUT = 1 is ON
- *       GPIO_OUT = 0 is OFF
+ * gpio: GPIO_OUT = 1 is OFF
+ *       GPIO_OUT = 0 is ON
 */
 
 // define test led pin
